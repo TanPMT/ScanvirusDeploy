@@ -1,0 +1,29 @@
+@model IEnumerable<dynamic>
+
+    <h2>Danh sách file</h2>
+
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Tên file</th>
+    <th>Người tải lên</th>
+    <th>Ngày tải lên</th>
+    <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var file in Model)
+{
+    <tr>
+        <td>@file.FileName</td>
+        <td>@file.UploadedBy</td>
+        <td>@file.UploadedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        <td>
+        <a href="/files/download/@file.Id" class="btn btn-primary">Tải xuống</a>
+        </td>
+        </tr>
+}
+</tbody>
+    </table>
+
+    <a href="/files/upload" class="btn btn-success">Tải lên file mới</a>
